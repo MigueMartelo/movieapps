@@ -19,7 +19,7 @@ export class MoviesService {
     let desdeStr = `${desde.getFullYear()}-${desde.getMonth()+1}-${desde.getDate()}`;
     let hastaStr = `${hasta.getFullYear()}-${hasta.getMonth()+1}-${hasta.getDate()}`;
 
-    let url = `${this.urlMoviedb}/discover/movie?primary_release_date.gte=${desdeStr}&primary_release_date.lte=${hastaStr}&api_key=${this.apiKey}&lenguage=es&callback=JSONP_CALLBACK`;
+    let url = `${this.urlMoviedb}/discover/movie?primary_release_date.gte=${desdeStr}&primary_release_date.lte=${hastaStr}&api_key=${this.apiKey}&language=es&callback=JSONP_CALLBACK`;
 
     return this.jsonp.get(url)
                      .map(res => res.json());
@@ -28,7 +28,7 @@ export class MoviesService {
 
   getPopulares(){
 
-    let url = `${this.urlMoviedb}/discover/movie?sort_by=popularity.desc&api_key=${this.apiKey}&lenguage=es&callback=JSONP_CALLBACK`;
+    let url = `${this.urlMoviedb}/discover/movie?sort_by=popularity.desc&api_key=${this.apiKey}&language=es&callback=JSONP_CALLBACK`;
 
     return this.jsonp.get(url)
                      .map(res => res.json());
@@ -36,7 +36,7 @@ export class MoviesService {
 
   getPopularesKids(){
 
-    let url = `${this.urlMoviedb}/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${this.apiKey}&lenguage=es&callback=JSONP_CALLBACK`;
+    let url = `${this.urlMoviedb}/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${this.apiKey}&language=es&callback=JSONP_CALLBACK`;
 
     return this.jsonp.get(url)
                      .map(res => res.json());
