@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'app';
 
   constructor (public _ms:MoviesService) {
-    this._ms.getPopulares().subscribe( data => console.log(data));
+    this._ms.getPopulares().subscribe();
   }
 }
