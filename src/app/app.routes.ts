@@ -7,6 +7,7 @@ const app_routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'movie', component: MovieComponent },
   { path: 'search', component: SearchComponent },
+  { path: 'search/:texto', component: SearchComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 
