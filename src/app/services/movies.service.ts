@@ -8,6 +8,8 @@ export class MoviesService {
   private apiKey:string = "3f3e1a61d79e02f212ef84afe3357aef";
   private urlMoviedb:string = "https://api.themoviedb.org/3";
 
+  movies:any[] = [];
+
   constructor( private jsonp:Jsonp) { }
 
   getCartelera(){
@@ -42,12 +44,15 @@ export class MoviesService {
                      .map(res => res.json());
   }
 
-  buscarMovies(query:string){
+  searchMovie(query:string){
 
-    let url = `${this.urlMoviedb}/search/movie?api_key=<${this.apiKey}&query=${query}&language=es&page=1&callback=JSONP_CALLBACK`;
+    let url = `${this.urlMoviedb}/search/movie?api_key=${this.apiKey}&query=${query}&language=es&page=1&callback=JSONP_CALLBACK`;
 
     return this.jsonp.get(url)
-                     .map( res=> res.json());
+                     .map( res => {
+                       this.movies = res.json().results;
+                       return this.movies;
+                     });
 
   }
 
